@@ -21,3 +21,4 @@ reflector
 rsync
 stow
 zsh
+fcron
