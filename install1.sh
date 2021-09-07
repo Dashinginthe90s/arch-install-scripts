@@ -1,6 +1,8 @@
 #!/bin/bash
 source ./vars.sh
 
+sed "1 a scriptDir=$scriptDir" -i install2.sh
+
 pacstrap $mountDir - < packageLists/main.txt
 genfstab -U $mountDir >> $mountDir/etc/fstab
 mkdir -p $mountDir/$scriptDir

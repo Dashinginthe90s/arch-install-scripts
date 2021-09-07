@@ -14,7 +14,7 @@ locale-gen
 echo "LANG=$locale" >> /etc/locale.conf
 
 echo $hostname >> /etc/hostname
-sed "/s/hostname/$hostname/g" -i /etc/hosts
+sed "s/hostname/$hostname/g" -i /etc/hosts
 
 ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
@@ -26,7 +26,7 @@ uncomment '%wheel ALL=(ALL) NOPASSWD: ALL' /etc/sudoers
 
 uncomment 'COMPRESSION="lz4"'
 comment '^HOOKS=' /etc/mkinitcpio.conf
-sed '/#HOOKS=/a/HOOKS=(base systemd autodetect modconf block keyboard fsck filesystems)' >> /etc/mkinitcpio.conf
+sed '/#HOOKS=/a HOOKS=(base systemd autodetect modconf block keyboard fsck filesystems)' >> /etc/mkinitcpio.conf
 mkinitcpio -P
 
 systemctl enable systemd-networkd
