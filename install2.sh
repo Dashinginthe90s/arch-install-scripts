@@ -16,10 +16,6 @@ echo "LANG=$locale" >> /etc/locale.conf
 echo $hostname >> /etc/hostname
 sed "s/hostname/$hostname/g" -i /etc/hosts
 
-/etc/mkinitcpio.conf /etc/mkinitcpio.bak
-ln -sf /etc/mkinitcpio.conf /etc/resolv.conf
-/etc/mkinitcpio.bak /etc/mkinitcpio.conf
-
 uncomment 'ParallelDownloads' /etc/pacman.conf
 uncomment 'VerbosePkgLists' /etc/pacman.conf
 uncomment 'Color' /etc/pacman.conf
@@ -35,6 +31,7 @@ systemctl enable systemd-networkd
 systemctl enable systemd-resolved
 systemctl enable sshd
 systemctl enable reflector.timer
+systemctl enable fcron
 
 useradd $username -G wheel -m
 mkdir /home/$username/.ssh

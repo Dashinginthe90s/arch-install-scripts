@@ -2,3 +2,4 @@ Install amd-ucode or intel-ucode
 Run grub-install & grub-mkconfig
 Check hostname & hosts
 set passwords
+run /root/resolv-slink.sh after reboot
