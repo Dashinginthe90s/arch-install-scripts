@@ -20,3 +20,4 @@ grub
 reflector
 rsync
 stow
+zsh
