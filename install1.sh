@@ -3,5 +3,6 @@ source ./vars.sh
 
 pacstrap $mountDir - < packageLists/main.txt
 genfstab -U $mountDir >> $mountDir/etc/fstab
+mkdir -p $scriptDir
 cp -r ./* $scriptDir
-arch-chroot cd $scriptDir && ./install2.sh
+arch-chroot $scriptDir/install2.sh

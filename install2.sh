@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source ./vars.sh
-source ./funcs.sh
+source $scriptDir/vars.sh
+source $scriptDir/funcs.sh
 
 rsync -r $confDir /
 
@@ -14,7 +14,6 @@ locale-gen
 echo "LANG=$locale" >> /etc/locale.conf
 
 echo $hostname >> /etc/hostname
-cp ./$confDir/hosts.txt /etc/hosts
 sed "/s/hostname/$hostname/g" -i /etc/hosts
 
 ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
@@ -38,10 +37,10 @@ systemctl enable reflector.timer
 useradd $username -G wheel -m
 mkdir /home/$username/.ssh
 chmod 700 /home/$username/.ssh
-cp authorized_keys.txt /home/$username/.ssh/authorized_keys
+cp $scriptDir/authorized_keys.txt /home/$username/.ssh/authorized_keys
 chmod 600 /home/$username/.ssh/authorized_keys
 chown -R $username:$username /home/nicholas/.ssh
 
-pacman -Syu --asdeps - < packageLists/main-deps.txt
+pacman -Syu --asdeps - < $scriptDir/packageLists/main-deps.txt
 
-cat afterwards.txt
+cat $scriptDir/afterwards.txt
