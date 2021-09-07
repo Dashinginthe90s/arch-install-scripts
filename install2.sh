@@ -24,7 +24,7 @@ uncomment '%wheel ALL=(ALL) NOPASSWD: ALL' /etc/sudoers
 
 uncomment 'COMPRESSION="lz4"' /etc/mkinitcpio.conf
 comment '^HOOKS=' /etc/mkinitcpio.conf
-sed '/#HOOKS=/a HOOKS=(base systemd autodetect modconf block keyboard fsck filesystems)' -i /etc/mkinitcpio.conf
+sed "/#HOOKS=/a HOOKS=($hooks)" -i /etc/mkinitcpio.conf
 mkinitcpio -P
 
 systemctl enable systemd-networkd
