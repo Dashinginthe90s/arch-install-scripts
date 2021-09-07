@@ -1,0 +1,4 @@
+Install amd-ucode or intel-ucode
+Run grub-install & grub-mkconfig
+Check hostname & hosts
+set passwords

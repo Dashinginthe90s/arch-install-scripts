@@ -1,0 +1,47 @@
+#!/bin/bash
+
+source ./vars.sh
+source ./funcs.sh
+
+rsync -r $confDir /
+
+ln -sf /user/share/zoneinfo/$timezone /etc/localtime
+hwclock --systohc
+timedatectl set-ntp true
+
+uncomment "#$locale" /etc/locale.gen
+locale-gen
+echo "LANG=$locale" >> /etc/locale.conf
+
+echo $hostname >> /etc/hostname
+cp ./$confDir/hosts.txt /etc/hosts
+sed "/s/hostname/$hostname/g" -i /etc/hosts
+
+ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+
+uncomment 'ParallelDownloads' /etc/pacman.conf
+uncomment 'VerbosePkgLists' /etc/pacman.conf
+uncomment 'Color' /etc/pacman.conf
+
+uncomment '%wheel ALL=(ALL) NOPASSWD: ALL' /etc/sudoers
+
+uncomment 'COMPRESSION="lz4"'
+comment '^HOOKS=' /etc/mkinitcpio.conf
+sed '/#HOOKS=/a/HOOKS=(base systemd autodetect modconf block keyboard fsck filesystems)' >> /etc/mkinitcpio.conf
+mkinitcpio -P
+
+systemctl enable systemd-networkd
+systemctl enable systemd-resolved
+systemctl enable sshd
+systemctl enable reflector.timer
+
+useradd $username -G wheel -m
+mkdir /home/$username/.ssh
+chmod 700 /home/$username/.ssh
+cp authorized_keys.txt /home/$username/.ssh/authorized_keys
+chmod 600 /home/$username/.ssh/authorized_keys
+chown -R $username:$username /home/nicholas/.ssh
+
+pacman -Syu --asdeps - < packageLists/main-deps.txt
+
+cat afterwards.txt
