@@ -1,8 +1,8 @@
 #!/bin/bash
 source ./vars.sh
 
-pacstrap $mountDir - < packageLists/main.txt
+pacstrap --needed $mountDir - < packageLists/main.txt
 genfstab -U $mountDir >> $mountDir/etc/fstab
-mkdir -p $scriptDir
-cp -r ./* $scriptDir
-arch-chroot $scriptDir/install2.sh
+mkdir -p $mountDir/$scriptDir
+cp -r ./* $mountDir/$scriptDir
+arch-chroot $mountDir $scriptDir/install2.sh
