@@ -8,3 +8,4 @@ genfstab -U $mountDir >> $mountDir/etc/fstab
 mkdir -p $mountDir/$scriptDir
 cp -r ./* $mountDir/$scriptDir
 arch-chroot $mountDir $scriptDir/install2.sh
+ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf

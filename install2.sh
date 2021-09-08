@@ -5,9 +5,8 @@ source $scriptDir/funcs.sh
 
 rsync -r $confDir/ /
 
-ln -sf /user/share/zoneinfo/$timezone /etc/localtime
+ln -sf /usr/share/zoneinfo/$timezone /etc/localtime
 hwclock --systohc
-timedatectl set-ntp true
 
 uncomment "#$locale" /etc/locale.gen
 locale-gen
@@ -32,6 +31,7 @@ systemctl enable systemd-resolved
 systemctl enable sshd
 systemctl enable reflector.timer
 systemctl enable fcron
+systemctl enable systemd-timesyncd
 
 useradd $username -G wheel -m
 mkdir /home/$username/.ssh
