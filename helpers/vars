@@ -1,0 +1,11 @@
+mountDir='/install'
+scriptDir='/root/installScript'
+helperDir="$scriptDir/helpers"
+confFiles="$scriptDir/confFiles"
+homeFiles="$scriptDir/homeFiles"
+packageLists="$scriptDir/packageLists"
+timezone='America/Toronto'
+locale='en_US.UTF-8'
+hooks='base systemd autodetect modconf block keyboard fsck filesystems'
+hostname='arch'
+username='nicholas'

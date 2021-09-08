@@ -1,7 +1,0 @@
-#!/bin/bash
-uncomment () {
-  sed "/$1/s/^# *//" -i "$2"
-}
-comment () {
-  sed "/$1/s/^/#/" -i "$2"
-}
