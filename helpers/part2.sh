@@ -1,8 +1,8 @@
 #!/bin/bash
 
 scriptDir=placeholder
-source "$helperFiles/vars"
-source "$helperFiles/funcs"
+source "$scriptDir/helpers/vars"
+source "$scriptDir/helpers/funcs"
 
 rsync -r "$confFiles/" '/'
 
