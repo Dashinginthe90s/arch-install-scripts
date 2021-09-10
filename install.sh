@@ -18,5 +18,5 @@ cp -r \
 "$extractDir/install.sh" \
 "$mountDir/$scriptDir"
 
-arch-chroot "$mountDir" "$scriptDir/install2.sh"
+arch-chroot "$mountDir" "$helperDir/part2.sh"
 ln -sf '/run/systemd/resolve/stub-resolv.conf' "$mountDir/etc/resolv.conf"
