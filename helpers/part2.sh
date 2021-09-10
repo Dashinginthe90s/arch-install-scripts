@@ -47,5 +47,5 @@ chmod 600 "/home/$username/.ssh/authorized_keys"
 pacman -Syu --asdeps --needed --noconfirm - < \
 "$packageLists/main-deps.txt"
 
-cat "$helperFiles/afterwards.txt"
+cat "$helperDir/afterwards.txt"
 bash
