@@ -3,7 +3,7 @@
 extractDir=`dirname "$0"`
 source "$extractDir/helpers/vars"
 
-sed "s;scriptdir=.*;scriptDir=$scriptDir;" -i \
+sed "s;scriptDir=.*;scriptDir=$scriptDir;" -i \
 "$extractDir/helpers/part2.sh"
 
 pacstrap "$mountDir" - < "$extractDir/packageLists/main.txt"
