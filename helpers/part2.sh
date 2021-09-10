@@ -39,12 +39,12 @@ systemctl enable fcron
 systemctl enable systemd-timesyncd
 
 useradd $username -G wheel -m
-rsync -r "$homeFiles" "/home/$username"
+rsync -r "$homeFiles/" "/home/$username"
 chown -R $username:$username "/home/$username"
 chmod 700 "/home/$username/.ssh"
 chmod 600 "/home/$username/.ssh/authorized_keys"
 
-pacman -Syu --asdeps --needed --noconfirm - < 
+pacman -Syu --asdeps --needed --noconfirm - < \
 "$packageLists/main-deps.txt"
 
 cat "$helperFiles/afterwards.txt"
