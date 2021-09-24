@@ -1,0 +1,3 @@
+hunspell
+hunspell-en_US
+pulseaudio-alsa

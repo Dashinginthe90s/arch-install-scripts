@@ -1,0 +1,16 @@
+xorg-xinit
+i3-gaps
+i3lock
+rofi
+polybar
+noto-fonts
+noto-fonts-emoji
+noto-fonts-cjk
+pulseaudio
+picom
+firefox
+paprefs
+pavucontrol
+arandr
+rxvt-unicode
+xorg-server

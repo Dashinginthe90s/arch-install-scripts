@@ -1,12 +1,11 @@
 base
+base-devel
 linux
 linux-firmware
-btrfs-progs
 dosfstools
 exfatprogs
 e2fsprogs
 ntfs-3g
-lvm2
 neovim
 man-db
 man-pages
@@ -22,3 +21,5 @@ rsync
 stow
 zsh
 fcron
+go
+samba
