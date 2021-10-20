@@ -47,9 +47,9 @@ chmod 600 "/home/$username/.ssh/authorized_keys"
 pacman -Syu --asdeps --needed --noconfirm - < \
 "$packageLists/main-deps.txt"
 
-git clone 'https://aur.archlinux.org/yay.git' "$scriptDir/yay"
+sudo -u $username git clone 'https://aur.archlinux.org/yay.git' "$scriptDir/yay"
 cd "$scriptDir/yay"
-makepkg --install --noconfirm
+sudo -u $username makepkg --install --noconfirm
 cd '/'
 rm -rf "$scriptDir/yay"
 
