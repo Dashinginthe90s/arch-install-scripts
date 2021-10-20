@@ -1,4 +1,4 @@
-mountDir='/install'
+mountDir='/mnt'
 scriptDir='/root/installScript'
 helperDir="$scriptDir/helpers"
 confFiles="$scriptDir/confFiles"

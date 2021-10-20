@@ -47,11 +47,12 @@ chmod 600 "/home/$username/.ssh/authorized_keys"
 pacman -Syu --asdeps --needed --noconfirm - < \
 "$packageLists/main-deps.txt"
 
-sudo -u $username git clone 'https://aur.archlinux.org/yay.git' "$scriptDir/yay"
-cd "$scriptDir/yay"
+yayDir="/home/$username/yay"
+sudo -u $username git clone 'https://aur.archlinux.org/yay.git' "$yayDir"
+cd "$yayDir"
 sudo -u $username makepkg --install --noconfirm
 cd '/'
-rm -rf "$scriptDir/yay"
+rm -rf "$yayDir"
 
 cat "$helperDir/afterwards.txt"
 bash
