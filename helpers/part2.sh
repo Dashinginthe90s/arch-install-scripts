@@ -17,7 +17,7 @@ echo "$hostname" >> '/etc/hostname'
 sed "s/hostname/$hostname/g" -i \
 '/etc/hosts'
 
-uncomment '%wheel ALL=(ALL) NOPASSWD: ALL' '/etc/sudoers'
+uncomment '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' '/etc/sudoers'
 
 uncomment 'ParallelDownloads' '/etc/pacman.conf'
 uncomment 'VerbosePkgLists' '/etc/pacman.conf'
