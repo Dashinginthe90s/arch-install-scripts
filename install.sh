@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mountpoint /mnt || echo "/mnt is not mounted"; exit 1
+mountpoint /mnt || ( echo "/mnt is not mounted"; exit 1 )
 
 extractDir=`dirname "$0"`
 source "$extractDir/helpers/funcs"
@@ -12,7 +12,6 @@ sed "s;scriptDir=.*;scriptDir=$scriptDir;" -i \
 uncomment 'ParallelDownloads' '/etc/pacman.conf'
 uncomment 'VerbosePkgLists' '/etc/pacman.conf'
 uncomment 'Color' '/etc/pacman.conf'
-echo 'ILoveCandy' >> '/etc/pacman.conf'
 
 pacstrap "$mountDir" - < "$extractDir/packageLists/main.txt"
 genfstab -U "$mountDir" >> "$mountDir/etc/fstab"
