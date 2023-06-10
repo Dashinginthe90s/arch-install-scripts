@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mountpoint /mnt || echo "/mnt is not mounted"; exit 1
+
 extractDir=`dirname "$0"`
 source "$extractDir/helpers/vars"
 
