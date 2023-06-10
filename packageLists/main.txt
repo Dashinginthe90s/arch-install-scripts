@@ -5,7 +5,6 @@ linux-firmware
 dosfstools
 exfatprogs
 e2fsprogs
-ntfs-3g
 neovim
 man-db
 man-pages
@@ -14,12 +13,10 @@ openssh
 sudo
 python
 git
-words
 grub
 reflector
 rsync
 stow
 zsh
 fcron
-go
-samba
+cifs-utils

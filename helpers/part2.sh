@@ -22,6 +22,7 @@ uncomment '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' '/etc/sudoers'
 uncomment 'ParallelDownloads' '/etc/pacman.conf'
 uncomment 'VerbosePkgLists' '/etc/pacman.conf'
 uncomment 'Color' '/etc/pacman.conf'
+echo 'ILoveCandy' >> '/etc/pacman.conf'
 
 uncomment 'COMPRESSION="lz4"' '/etc/mkinitcpio.conf'
 comment '^HOOKS=' '/etc/mkinitcpio.conf'
@@ -48,7 +49,7 @@ pacman -Syu --asdeps --needed --noconfirm - < \
 "$packageLists/main-deps.txt"
 
 yayDir="/home/$username/yay"
-sudo -u $username git clone 'https://aur.archlinux.org/yay.git' "$yayDir"
+sudo -u $username git clone 'https://aur.archlinux.org/yay-bin.git' "$yayDir"
 cd "$yayDir"
 sudo -u $username makepkg --install --noconfirm
 cd '/'
